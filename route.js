@@ -7,6 +7,7 @@ import Batched from './pages/Batched';
 import Batched2 from './pages/Batched2';
 import VirtualList from './pages/VirtualList';
 import Demo1 from './pages/demo1';
+import Demo2 from './pages/demo2';
 
 export default [
   {
@@ -60,6 +61,11 @@ export default [
         path: '/demo1',
         name: 'demo1',
         component: Demo1
+      },
+      {
+        path: '/demo2',
+        name: 'demo2',
+        component: Demo2
       }
     ]
   }

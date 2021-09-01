@@ -1,44 +1,38 @@
-import React from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 
-class Demo1 extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log('constructor');
+export default function WithoutMemo() {
+  const [count, setCount] = useState(1);
+  const [val, setValue] = useState('');
 
-    this.onClickHandler = this.onClickHandler.bind(this);
-  }
-  componentWillMount() {
-    console.log('componentWillMount');
-  }
-  componentDidMount() {
-    console.log('componentDidMount');
-  }
-  componentWillUnmount() {
-    console.log('componentWillUnmount');
-  }
-  componentWillReceiveProps() {
-    console.log('componentWillReceiveProps');
-  }
-  shouldComponentUpdate() {
-    console.log('shouldComponentUpdate');
-    return true;
-  }
-  componentWillUpdate() {
-    console.log('componentWillUpdate');
-  }
-  componentDidUpdate() {
-    console.log('componentDidUpdate');
-  }
+  // // 未性能优化前，数据每次更新时，均会触发
+  // function expensive() {
+  //   console.log('compute');
+  //   let sum = 0;
+  //   for (let i = 0; i < count * 100; i++) {
+  //     sum += i;
+  //   }
+  //   return sum;
+  // }
 
-  onClickHandler() {
-    console.log('onClickHandler');
-    this.forceUpdate();
-  }
+  // 使用useMemo 性能优化,仅在count更新时触发
+  const expensive = useMemo(() => {
+    console.log('compute');
+    let sum = 0;
+    for (let i = 0; i < count * 100; i++) {
+      sum += i;
+    }
+    return sum;
+  }, [count]);
 
-  render() {
-    console.log('render');
-    return <button onClick={this.onClickHandler}> click here </button>;
-  }
+  return (
+    <div>
+      <h4>
+        {count}-{val}-{expensive}
+      </h4>
+      <div>
+        <button onClick={() => setCount(count + 1)}>+c1</button>
+        <input value={val} onChange={event => setValue(event.target.value)} />
+      </div>
+    </div>
+  );
 }
-
-export default Demo1;
