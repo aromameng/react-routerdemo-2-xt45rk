@@ -6,6 +6,7 @@ import Test from './pages/Test';
 import Batched from './pages/Batched';
 import Batched2 from './pages/Batched2';
 import VirtualList from './pages/VirtualList';
+import Demo1 from './pages/demo1';
 
 export default [
   {
@@ -54,6 +55,11 @@ export default [
         path: '/virtualList',
         name: '虚拟列表',
         component: VirtualList
+      },
+      {
+        path: '/demo1',
+        name: 'demo1',
+        component: Demo1
       }
     ]
   }
