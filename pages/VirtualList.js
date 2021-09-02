@@ -51,7 +51,6 @@ class VirtualList extends React.Component {
   }
   /* 处理滚动效果 */
   render() {
-    console.log(1111);
     const { list, scorllBoxHeight, itemHeight, start, end } = this.state;
     const renderList = list.slice(start, end);
     return (

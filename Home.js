@@ -49,6 +49,10 @@ class Home extends React.Component {
           <Link to="/batched">Goto Page batched</Link>
           <br />
           <Link to="/virtualList">Goto Page virtualList</Link>
+          <br />
+          <Link to="/demo1">Goto Page demo1</Link>
+          <br />
+          <Link to="/demo2">Goto Page demo2</Link>
         </div>
       </div>
     );
